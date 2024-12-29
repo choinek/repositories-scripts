@@ -11,11 +11,9 @@ on:
 jobs:
    build-and-push:
       runs-on: ubuntu-latest
-
       permissions:
          contents: read
          packages: write
-
       strategy:
          matrix:
             image:
@@ -61,9 +59,11 @@ jobs:
                name: ci-images-info-artifact-${{ matrix.image.name }}
                path: ci-images-info
 
-   commit-and-push:
+   update-generated-branch:
       needs: build-and-push
       runs-on: ubuntu-latest
+      permissions:
+         packages: write
       steps:
          -  name: Checkout `Generated` Branch
             uses: actions/checkout@v4
