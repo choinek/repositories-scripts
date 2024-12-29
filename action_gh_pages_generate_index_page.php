@@ -120,7 +120,6 @@ if (is_file('LICENSE')) {
             </div>
         </details>
     <?php endforeach; ?>
-
 </div>
 <h2>Repository information</h2>
 <?= $repositoryDocs ?>
