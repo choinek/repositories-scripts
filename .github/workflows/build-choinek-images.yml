@@ -25,7 +25,9 @@ jobs:
                password: ${{ secrets.GITHUB_TOKEN }}
 
          -  name: Build Docker Image
-            run: docker build -f ci-images/php-scripts_8.4.Dockerfile -t ghcr.io/choinek/ci-images/php-scripts:8.4 .
+            run: | 
+               docker build -f ci-images/php-scripts_8.4.Dockerfile -t ghcr.io/choinek/ci-images/php-scripts:8.4 .
 
          -  name: Push Docker Image
-            run: docker push ghcr.io/choinek/images/php-scripts:8.4
+            run: |
+               docker push ghcr.io/choinek/images/php-scripts:8.4
