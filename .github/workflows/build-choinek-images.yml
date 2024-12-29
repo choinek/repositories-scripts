@@ -45,11 +45,15 @@ jobs:
          # I used base64 to avoid issues with special characters in the output
          -  name: Test Docker Image and Save Output
             run: |
-               output=$(docker run --rm ghcr.io/choinek/${{ matrix.image.image }} php -v | base64)
+               output=$(docker run --rm ghcr.io/choinek/${{ matrix.image.image }} bash -c "php -v && php -m && dpkg-query -W" | base64)
                mkdir -p ci-images-info/$(dirname ${{ matrix.image.source }})
                outputFilePath=ci-images-info/${{ matrix.image.source }}.log
-               echo "Source: ${{ matrix.image.source }}" > $outputFilePath
-               echo "Image: ghcr.io/choinek/${{ matrix.image.image }}" >> $outputFilePath
+               echo "Source:" > $outputFilePath
+               echo "${{ matrix.image.source }}" >> $outputFilePath
+               echo "" >> $outputFilePath
+               echo "Image:" >> $outputFilePath
+               echo "ghcr.io/choinek/${{ matrix.image.image }}" >> $outputFilePath
+               echo "" >> $outputFilePath
                echo "Output:" >> $outputFilePath
                echo "$output" | base64 --decode >> $outputFilePath
 
