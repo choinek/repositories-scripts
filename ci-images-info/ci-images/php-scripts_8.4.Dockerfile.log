@@ -1,0 +1,7 @@
+Source: ci-images/php-scripts_8.4.Dockerfile
+Image: ghcr.io/choinek/ci-images/php-scripts:8.4
+Output:
+PHP 8.4.2 (cli) (built: Dec 24 2024 22:21:26) (NTS)
+Copyright (c) The PHP Group
+Built by https://github.com/docker-library/php
+Zend Engine v4.4.2, Copyright (c) Zend Technologies
