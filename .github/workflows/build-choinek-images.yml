@@ -59,7 +59,7 @@ jobs:
             uses: actions/upload-artifact@v4
             with:
                name: ci-images-info-artifact-${{ matrix.image.name }}
-               path: ci-images-info/
+               path: ci-images-info
 
    commit-and-push:
       needs: build-and-push
@@ -73,8 +73,8 @@ jobs:
          -  name: Download Artifacts
             uses: actions/download-artifact@v4
             with:
-               name: ci-images-info-artifact-*
-               path: ci-images-info/
+               pattern: ci-images-info-artifact-*
+               path: ci-images-info
                merge-multiple: true
 
          -  name: Collect and Commit Updates to `generated` Branch
