@@ -30,4 +30,4 @@ jobs:
 
          -  name: Push Docker Image
             run: |
-               docker push ghcr.io/choinek/images/php-scripts:8.4
+               docker push ghcr.io/choinek/ci-images/php-scripts:8.4
