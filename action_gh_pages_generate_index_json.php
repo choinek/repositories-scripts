@@ -23,8 +23,8 @@ foreach ($directories as $dir) {
     }
 
     $output[] = [
-        'file' => "https://choinek.github.io/repositories-scripts/download/$dir.zip",
         'name' => $dir,
+        'url' => "https://choinek.github.io/repositories-scripts/download/$dir.zip",
         'description' => trim($description),
         'totalSize' => $totalSize,
         'files' => $files,
