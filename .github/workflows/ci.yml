@@ -1,0 +1,65 @@
+name: CI Pipeline - Deploy Choinek Repository Scripts to GitHub Pages
+
+on:
+   push:
+      branches:
+         - main
+
+jobs:
+   deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+         -  name: Checkout Code
+            uses: actions/checkout@v3
+
+         -  name: Prepare .zip files
+            run: |
+               mkdir -p public/download
+               zip -r public/download/choinek-scripts.zip .choinek-scripts
+               for dir in */; do
+                 if [ -f "$dir/README.md" ]; then
+                   cp "$dir/README.md" "public/$dir.README.md"
+                 fi
+               done
+
+         -  name: Generate Index Page and install.sh
+            run: |
+               echo "<html><body><h1>Downloads</h1>" > public/index.html
+               echo "<ul>" >> public/index.html
+               for file in public/download/*.zip; do
+                 fname=$(basename "$file")
+                 echo "<li><a href=\"download/$fname\">$fname</a></li>" >> public/index.html
+               done
+               echo "</ul>" >> public/index.html
+               echo "<p>Use the following command to install:</p>" >> public/index.html
+               echo "<code>curl -sL https://choinek.github.io/repository-scripts/download/choinek-scripts.zip -o choinek-scripts.zip && unzip choinek-scripts.zip</code>" >> public/index.html
+               echo "</body></html>" >> public/index.html
+
+         -  name: Generate index.json
+            run: |
+               echo "[" > public/index.json
+               for dir in */; do
+                 if [[ -d "$dir" ]]; then
+                   name=$(basename "$dir")
+                   description=""
+                   [[ -f "$dir/README.md" ]] && description=$(head -n 1 "$dir/README.md")
+                   files=$(find "$dir" -type f | sed 's/^/        "/;s/$/",/' | tr '\n' ' ' | sed '$ s/,$//')
+                   echo "  {" >> public/index.json
+                   echo "    \"file\": \"download/$name.zip\"," >> public/index.json
+                   echo "    \"name\": \"$name\"," >> public/index.json
+                   echo "    \"description\": \"$description\"," >> public/index.json
+                   echo "    \"files\": [" >> public/index.json
+                   echo "$files" >> public/index.json
+                   echo "    ]" >> public/index.json
+                   echo "  }," >> public/index.json
+                 fi
+               done
+               sed -i '$ s/,$//' public/index.json
+               echo "]" >> public/index.json
+
+         -  name: Deploy to GitHub Pages
+            uses: peaceiris/actions-gh-pages@v4
+            with:
+               github_token: ${{ secrets.GITHUB_TOKEN }}
+               publish_dir: ./public
