@@ -5,42 +5,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>choinek/repository-scripts</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css/out/water.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+    <style>
+        details {
+            margin-bottom: 1em;
+        }
+        summary {
+            font-weight: bold;
+        }
+        pre code {
+            display: block;
+            padding: 1em;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .description-box {
+            max-height: 200px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .description-box::after {
+            content: '⬆ Scroll for more ⬇';
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            font-size: 0.8em;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
 <h1>choinek/repository-scripts</h1>
 <p>This is a collection of useful scripts for managing repositories. Use the command below to install:</p>
-<pre>
-curl -sL https://choinek.github.io/repository-scripts/download/install.sh | bash
-    </pre>
-<h2>Available Downloads</h2>
-<ul>
-            <li>
-            <a href="download/ci-images.zip">ci-images.zip</a> - No description available        </li>
-    </ul>
-<h2>Repository Documentation</h2>
-<h3>README</h3># repositories-scripts<br />
+<pre><code>curl -sL https://choinek.github.io/repository-scripts/download/install.sh | bash</code></pre>
+<h2>Available Script Groups</h2>
+<div>
+            <details>
+            <summary style="width:100%">choinek-scripts</summary>
+            <div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th scope="row" style="width: 20%">File</th>
+                        <td><a href="https://choinek.github.io/repositories-scripts/download/./choinek-scripts.zip">choinek-scripts.zip [Download]</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="width: 20%">Size</th>
+                        <td>5.87 KB</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="width: 20%">Files</th>
+                        <td>
+                            <ul>
+                                                                    <li>README.md (3.67 KB)</li>
+                                                                    <li>text-includer-hook-installer.sh (1.11 KB)</li>
+                                                                    <li>text-includer.sh (1.10 KB)</li>
+                                                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="width: 20%">Description</th>
+                        <td>
+                            <pre class="description-box">
+                                <code># Choinek&#039;s Scripts<br />
+<br />
 Custom scripts by Choinek for working with open-source repositories.<br />
-<h3>LICENSE</h3>MIT License<br />
 <br />
-Copyright (c) 2024 Adrian Chojnicki<br />
+## Requirements<br />
 <br />
-Permission is hereby granted, free of charge, to any person obtaining a copy<br />
-of this software and associated documentation files (the "Software"), to deal<br />
-in the Software without restriction, including without limitation the rights<br />
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br />
-copies of the Software, and to permit persons to whom the Software is<br />
-furnished to do so, subject to the following conditions:<br />
+- **Bash**: The scripts use `bash` for features.<br />
+- **Git**: The script integrates with Git hooks for automation.<br />
 <br />
-The above copyright notice and this permission notice shall be included in all<br />
-copies or substantial portions of the Software.<br />
+## License<br />
 <br />
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br />
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br />
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br />
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br />
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br />
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE<br />
-SOFTWARE.<br />
-</body>
+This project is licensed under the MIT License:<br />
+<br />
+```<br />
+Copyright 2024 Adrian Chojnicki<br />
+<br />
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br />
+<br />
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br />
+<br />
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br />
+```<br />
+<br />
+## Scripts<br />
+<br />
+### Text-Includer<br />
+<br />
+The **Text-Includer** is a flexible script designed to process text files with placeholders and replace them dynamically<br />
+with content from other files. It is particularly useful for generating documentation files like `README.md` by<br />
+including content from other files such as `LICENSE`.<br />
+<br />
+#### How It Works<br />
+<br />
+The Text-Includer script scans a source file for placeholders in the format:<br />
+<br />
+```text<br />
+{{text-includer:v1:loadfile:&lt;file&gt;:&lt;start_marker&gt;:&lt;end_marker&gt;}}<br />
+```<br />
+<br />
+- `&lt;file&gt;`: The file to extract content from.<br />
+- `&lt;start_marker&gt;`: The marker in `&lt;file&gt;` where the included content starts.<br />
+- `&lt;end_marker&gt;`: The marker in `&lt;file&gt;` where the included content ends.<br />
+<br />
+Example placeholder:<br />
+<br />
+```text<br />
+{{text-includer:v1:loadfile:LICENSE:#1:#2}}<br />
+```<br />
+<br />
+This placeholder will include the content between `#1` and `#2` in the `LICENSE` file.<br />
+<br />
+#### Installation<br />
+<br />
+**1. Install Choinek&#039;s Scripts:**<br />
+<br />
+<br />
+(@todo i will put here curl to install after deploy to github pages - few minutes from now :P)<br />
+<br />
+**2. Run the Installer Script**<br />
+<br />
+```bash<br />
+sh .choinek-scripts/install-text-includer-hook.sh<br />
+```<br />
+<br />
+You will be prompted to enter:<br />
+<br />
+- The source file path (e.g., `README.md.source`).<br />
+  - _Check_ [_Usage_](#Usage) _for more details._<br />
+- The output file path (e.g., `README.md`).<br />
+<br />
+**3. Verify the Pre-commit Hook**<br />
+<br />
+The installer will create or update the `.git/hooks/pre-commit` file to include the text-includer logic. It will:<br />
+<br />
+- Generate the output file (e.g., `README.md`) before every commit.<br />
+- Ensure the placeholders in the source file are replaced with the correct content.<br />
+<br />
+### Usage<br />
+<br />
+#### 1. Prepare Your Source File<br />
+<br />
+Add placeholders to your source file using the format:<br />
+<br />
+```text<br />
+{{text-includer:v1:loadfile:&lt;file&gt;:&lt;start_marker&gt;:&lt;end_marker&gt;}}<br />
+```<br />
+<br />
+#### 2. Modify Referenced Files<br />
+<br />
+Ensure the referenced files (e.g., `LICENSE`) contain the markers and content to be included.<br />
+<br />
+#### 3. Commit Changes<br />
+<br />
+When you commit, the pre-commit hook will automatically generate the output file by replacing the placeholders in the<br />
+source file.<br />
+<br />
+### Example<br />
+<br />
+#### Source File: `README.md.source`<br />
+<br />
+```markdown<br />
+# Project Name<br />
+<br />
+## License<br />
+<br />
+{{text-includer:v1:loadfile:LICENSE:#1:#2}}<br />
+```<br />
+<br />
+#### Referenced File: `LICENSE`<br />
+<br />
+```text<br />
+#1<br />
+This is the included license content.<br />
+#2<br />
+```<br />
+<br />
+#### Generated Output: `README.md`<br />
+<br />
+```markdown<br />
+# Project Name<br />
+<br />
+## License<br />
+<br />
+This is the included license content.<br />
+```</code>
+                            </pre>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    
+</div>
+<h2>Repository information</h2>
+<h3>README.md</h3><pre><code># repositories-scripts
+Custom scripts by Choinek for working with open-source repositories.
+
+## Authors
+
+- **Author**: Adrian Chojnicki
+</code></pre><h3>LICENSE</h3><pre><code>MIT License
+
+Copyright (c) 2024 Adrian Chojnicki
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</code></pre></body>
 </html>
