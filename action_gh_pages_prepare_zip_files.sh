@@ -1,8 +1,8 @@
 #!/bin/bash
 
 mkdir -p public/download
-for dir in */; do
-    if [[ -d "$dir" ]] && [[ "$dir" != "public/" ]]; then
-        zip -r "public/download/${dir%/}.zip" "$dir"
+for dir in ./*-scripts/; do
+    if [[ -d "$dir" ]]; then
+        zip -r "public/download/$(basename "$dir").zip" "$dir"
     fi
 done
