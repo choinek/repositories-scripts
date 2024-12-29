@@ -14,6 +14,9 @@ jobs:
    deploy:
       runs-on: ubuntu-latest
 
+      permissions:
+         contents: write
+
       container:
          image: ghcr.io/choinek/ci-images/php-scripts:8.4
 
@@ -28,10 +31,10 @@ jobs:
             run: ./action_gh_pages_prepare_zip_files.sh
 
          -  name: Generate JSON index
-            run: php action_gh_pages_generate_index_json.php >> public/index.json
+            run: php action_gh_pages_generate_index_json.php > public/index.json
 
          -  name: Generate HTML index page
-            run: php action_gh_pages_generate_index_page.php >> public/index.html
+            run: php action_gh_pages_generate_index_page.php > public/index.html
 
          - name: Deploy
            uses: peaceiris/actions-gh-pages@v4
