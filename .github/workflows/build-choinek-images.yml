@@ -25,72 +25,66 @@ jobs:
                }
 
       steps:
-         - name: Checkout Code
-           uses: actions/checkout@v4
+         -  name: Checkout Code
+            uses: actions/checkout@v4
 
-         - name: Login to GitHub Container Registry
-           uses: docker/login-action@v3
-           with:
-              registry: ghcr.io
-              username: ${{ github.actor }}
-              password: ${{ secrets.GITHUB_TOKEN }}
+         -  name: Login to GitHub Container Registry
+            uses: docker/login-action@v3
+            with:
+               registry: ghcr.io
+               username: ${{ github.actor }}
+               password: ${{ secrets.GITHUB_TOKEN }}
 
-         - name: Build Docker Image
+         -  name: Build Docker Image
+            run: |
+               docker build -f ${{ matrix.image.source }} -t ghcr.io/choinek/${{ matrix.image.image }} .
+
+         -  name: Push Docker Image
+            run: |
+               docker push ghcr.io/choinek/${{ matrix.image.image }}
+
+         # I used base64 to avoid issues with special characters in the output
+         - name: Test Docker Image and Save Output
            run: |
-              docker build -f ${{ matrix.image.source }} -t ghcr.io/choinek/${{ matrix.image.image }} .
-
-         - name: Push Docker Image
-           run: |
-              docker push ghcr.io/choinek/${{ matrix.image.image }}
-
-         - name: Test Docker Image
-           id: test-image
-           run: |
-              output=$(docker run --rm ghcr.io/choinek/${{ matrix.image.image }} php -v)
-              echo "output=${output}" >> $GITHUB_ENV
-
-         - name: Save Test Output
-           run: |
+              output=$(docker run --rm ghcr.io/choinek/${{ matrix.image.image }} php -v | base64)
               mkdir -p ci-images-info/$(dirname ${{ matrix.image.source }})
-              version=$(basename ${{ matrix.image.source }} .Dockerfile)
-              cat << EOF > ci-images-info/${{ matrix.image.source }}.txt
-              Source: ${{ matrix.image.source }}
-              Image: ghcr.io/choinek/${{ matrix.image.image }}
-              Output:
-              $(cat $GITHUB_ENV | grep output | sed 's/output=//g')
-              EOF
+              outputFilePath=ci-images-info/${{ matrix.image.source }}.log
+              echo "Source: ${{ matrix.image.source }}" > $outputFilePath
+              echo "Image: ghcr.io/choinek/${{ matrix.image.image }}" >> $outputFilePath
+              echo "Output:" >> $outputFilePath
+              echo "$output" | base64 --decode >> $outputFilePath
 
-         - name: Upload Test Output as Artifact
-           uses: actions/upload-artifact@v4
-           with:
-              name: test-outputs
-              path: ci-images-info/
+         -  name: Upload Test Output as Artifact
+            uses: actions/upload-artifact@v4
+            with:
+               name: test-outputs
+               path: ci-images-info/
 
    commit-and-push:
       needs: build-and-push
       runs-on: ubuntu-latest
       steps:
-         - name: Checkout `Generated` Branch
-           uses: actions/checkout@v4
-           with:
-              ref: generated
+         -  name: Checkout `Generated` Branch
+            uses: actions/checkout@v4
+            with:
+               ref: generated
 
-         - name: Download Artifacts
-           uses: actions/download-artifact@v3
-           with:
-              name: test-outputs
+         -  name: Download Artifacts
+            uses: actions/download-artifact@v3
+            with:
+               name: test-outputs
 
-         - name: Collect and Commit Updates to `generated` Branch
-           run: |
-              if [ -n "$(git status --porcelain)" ]; then
-                git config --global user.name "GitHub Actions"
-                git config --global user.email "actions@github.com"
-                git add ci-images-info/
-                git commit -m "Update ci-images test outputs automatically from build-choinek-images.yml"
-              else
-                echo "No changes to commit."
-              fi
+         -  name: Collect and Commit Updates to `generated` Branch
+            run: |
+               if [ -n "$(git status --porcelain)" ]; then
+                 git config --global user.name "GitHub Actions"
+                 git config --global user.email "actions@github.com"
+                 git add ci-images-info/
+                 git commit -m "Update ci-images test outputs automatically from build-choinek-images.yml"
+               else
+                 echo "No changes to commit."
+               fi
 
-         - name: Push Updates
-           run: |
-              git push origin generated
+         -  name: Push Updates
+            run: |
+               git push origin generated
