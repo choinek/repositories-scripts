@@ -4,6 +4,11 @@ on:
    push:
       branches:
          - main
+      paths-ignore:
+         - '.github/workflows/build-choinek-images.yml'
+         - 'ci-images/**'
+         - '.gitignore'
+      workflow_dispatch:
 
 jobs:
    deploy:
@@ -16,17 +21,17 @@ jobs:
          -  name: Checkout Code
             uses: actions/checkout@v4
 
+         -  name: Copy required files
+            run: ./action_gh_pages_copy_required_files.sh
+
          -  name: Prepare .zip files
             run: ./action_gh_pages_prepare_zip_files.sh
 
          -  name: Generate JSON index
-            run: php action_gh_pages_generate_index_json.php
+            run: php action_gh_pages_generate_index_json.php >> public/index.json
 
          -  name: Generate HTML index page
-            run: php action_gh_pages_generate_index_page.php
-
-         -  name: Copy required files
-            run: ./action_gh_pages_copy_required_files.sh
+            run: php action_gh_pages_generate_index_page.php >> public/index.html
 
          - name: Deploy
            uses: peaceiris/actions-gh-pages@v4
