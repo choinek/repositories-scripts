@@ -20,6 +20,7 @@ jobs:
          matrix:
             image:
                - {
+                  name: "ci-images-php-scripts-8.4",
                   source: "ci-images/php-scripts_8.4.Dockerfile",
                   image: "ci-images/php-scripts:8.4"
                }
@@ -57,7 +58,7 @@ jobs:
          -  name: Upload Test Output
             uses: actions/upload-artifact@v4
             with:
-               name: test-outputs-${{ matrix.image.image }}
+               name: test-outputs-${{ matrix.image.name }}
                path: ci-images-info/
 
    commit-and-push:
