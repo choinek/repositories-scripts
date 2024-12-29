@@ -44,20 +44,20 @@ jobs:
                docker push ghcr.io/choinek/${{ matrix.image.image }}
 
          # I used base64 to avoid issues with special characters in the output
-         - name: Test Docker Image and Save Output
-           run: |
-              output=$(docker run --rm ghcr.io/choinek/${{ matrix.image.image }} php -v | base64)
-              mkdir -p ci-images-info/$(dirname ${{ matrix.image.source }})
-              outputFilePath=ci-images-info/${{ matrix.image.source }}.log
-              echo "Source: ${{ matrix.image.source }}" > $outputFilePath
-              echo "Image: ghcr.io/choinek/${{ matrix.image.image }}" >> $outputFilePath
-              echo "Output:" >> $outputFilePath
-              echo "$output" | base64 --decode >> $outputFilePath
+         -  name: Test Docker Image and Save Output
+            run: |
+               output=$(docker run --rm ghcr.io/choinek/${{ matrix.image.image }} php -v | base64)
+               mkdir -p ci-images-info/$(dirname ${{ matrix.image.source }})
+               outputFilePath=ci-images-info/${{ matrix.image.source }}.log
+               echo "Source: ${{ matrix.image.source }}" > $outputFilePath
+               echo "Image: ghcr.io/choinek/${{ matrix.image.image }}" >> $outputFilePath
+               echo "Output:" >> $outputFilePath
+               echo "$output" | base64 --decode >> $outputFilePath
 
-         -  name: Upload Test Output as Artifact
+         -  name: Upload Test Output
             uses: actions/upload-artifact@v4
             with:
-               name: test-outputs
+               name: test-outputs-${{ matrix.image.image }}
                path: ci-images-info/
 
    commit-and-push:
@@ -72,7 +72,9 @@ jobs:
          -  name: Download Artifacts
             uses: actions/download-artifact@v4
             with:
-               name: test-outputs
+               name: test-outputs-*
+               pattern: test-outputs-*
+               merge-multiple: true
 
          -  name: Collect and Commit Updates to `generated` Branch
             run: |
