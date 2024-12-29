@@ -4,8 +4,9 @@ $directories = array_filter(glob('./*-scripts'), 'is_dir');
 $output = [];
 
 foreach ($directories as $dir) {
+    $basename = basename($dir);
     $readmePath = "$dir/README.md";
-    $description = is_file($readmePath) ? file_get_contents($readmePath) : 'No description available';
+    $description = is_file($readmePath) ? file_get_contents($readmePath) : "Missing $dir/README.md file.";
 
     $iterator = new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS)
@@ -23,8 +24,8 @@ foreach ($directories as $dir) {
     }
 
     $output[] = [
-        'name' => $dir,
-        'url' => "https://choinek.github.io/repositories-scripts/download/$dir.zip",
+        'name' => $basename,
+        'url' => "https://choinek.github.io/repositories-scripts/download/$basename.zip",
         'description' => trim($description),
         'totalSize' => $totalSize,
         'files' => $files,
