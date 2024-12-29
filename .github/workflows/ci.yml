@@ -14,7 +14,7 @@ jobs:
 
       steps:
          -  name: Checkout Code
-            uses: actions/checkout@v3
+            uses: actions/checkout@v4
 
          -  name: Prepare .zip files
             run: ./action_gh_pages_prepare_zip_files.sh
@@ -28,8 +28,8 @@ jobs:
          -  name: Copy required files
             run: ./action_gh_pages_copy_required_files.sh
 
-         -  name: Deploy to GitHub Pages
-            uses: peaceiris/actions-gh-pages@v4
-            with:
-               github_token: ${{ secrets.GITHUB_TOKEN }}
-               publish_dir: ./public
+         - name: Deploy
+           uses: peaceiris/actions-gh-pages@v4
+           with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_dir: ./public
