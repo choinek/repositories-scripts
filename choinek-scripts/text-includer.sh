@@ -16,9 +16,7 @@ replace_placeholders() {
 
     cp "$source_file" "$output_file"
 
-    # Version 1, as I want to start quickly with a simple version and improve it in the future if necessary.
-    # There are no other versions yet. :P
-    grep -oP '{{text-includer:v1:loadfile:\K[^}]+' "$source_file" | while read -r placeholder; do
+    grep -oP '{{text-includer:v1:content-of:\K[^}]+' "$source_file" | while read -r placeholder; do
         IFS=':' read -r file start_marker end_marker <<< "$placeholder"
 
         if [[ ! -f "$file" ]]; then
@@ -28,7 +26,7 @@ replace_placeholders() {
 
         content=$(awk "/$start_marker/{flag=1;next}/$end_marker/{flag=0}flag" "$file")
 
-        sed -i "s|{{text-includer:v1:loadfile:${placeholder}}}|${content}|g" "$output_file"
+        sed -i "s|{{text-includer:v1:content-of:${placeholder}}}|${content}|g" "$output_file"
     done
 }
 
