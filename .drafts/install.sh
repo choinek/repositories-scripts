@@ -44,12 +44,12 @@ function show_menu_dialog {
         fi
         index=$((index + 1))
     done
-    dialog --clear --title "choinek/repositories-scripts downloader" \
+    dialog --clear --title "choinek/scripts downloader" \
         --menu "Choose an option:" 20 60 10 "${options[@]}" >/dev/tty 2>&1
 }
 
 function show_menu_nodialog {
-    echo -e "=== choinek/repositories-scripts downloader ===\n"
+    echo -e "=== choinek/scripts downloader ===\n"
     local index=1
     for dir in $(echo "$DIRECTORIES" | jq -r '.name'); do
         if [[ -d "$dir" ]]; then
@@ -111,8 +111,8 @@ function show_directory_nodialog {
 
 function update_gitignore {
     local name="$1"
-    local marker_start="###> choinek/repositories-scripts ###"
-    local marker_end="###< choinek/repositories-scripts ###"
+    local marker_start="###> choinek/scripts ###"
+    local marker_end="###< choinek/scripts ###"
     local content="$marker_start\n$name\n$marker_end"
 
     if [[ -f ".gitignore" ]]; then

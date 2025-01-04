@@ -78,8 +78,8 @@ sh ./choinek-scripts/install-text-includer-hook.sh
 
 You will be prompted to enter:
 
-- The source file path (e.g., `README.md.source`).
-    - _Check_ [_Usage_](#Usage) _for more details._
+- The source file path (e.g., `.repository-workflow/templates/README.md`).
+  - _Check_ [_Usage_](#Usage) _for more details._
 - The output file path (e.g., `README.md`).
 
 **3. Verify the Pre-commit Hook**
@@ -89,47 +89,47 @@ The installer will create or update the `.git/hooks/pre-commit` file to include 
 - Generate the output file (e.g., `README.md`) before every commit.
 - Ensure the placeholders in the source file are replaced with the correct content.
 
-### Usage
+## Usage
 
-#### 1. Prepare Your Source File
+### 1. Prepare Your Source File
 
-Add placeholders to your source file using the format:
+Add placeholders to your source file using the supported formats:
 
 ```text
-{{text-includer:v1:loadfile:<file>:<start_marker>:<end_marker>}}
+{{text-includer:v1:content-of:<file>:<start_marker>:<end_marker>}}
+{{text-includer:v1:content-of:<file>:<start_marker>}}
+{{text-includer:v1:content-of:<file>::<end_marker>}}
+{{text-includer:v1:content-of:<file>::}}
+{{text-includer:v1:content-of:<file>}}
 ```
 
-#### 2. Modify Referenced Files
+### 2. Modify Referenced Files
 
 Ensure the referenced files (e.g., `LICENSE`) contain the markers and content to be included.
 
-#### 3. Commit Changes
+### 3. Commit Changes
 
-When you commit, the pre-commit hook will automatically generate the output file by replacing the placeholders in the
-source file.
+When you commit, the pre-commit hook will automatically generate the output file by replacing the placeholders in the source file.
 
-### Example
+## Example
 
-#### Source File: `README.md.source`
-
+### Source File: `.repository-workflow/templates/README.md`
 ```markdown
 # Project Name
 
 ## License
 
-{{text-includer:v1:loadfile:LICENSE:#1:#2}}
+{{text-includer:v1:content-of:LICENSE:#1:#2}}
 ```
 
-#### Referenced File: `LICENSE`
-
+### Referenced File: `LICENSE`
 ```text
 #1
 This is the included license content.
 #2
 ```
 
-#### Generated Output: `README.md`
-
+### Generated Output: `README.md`
 ```markdown
 # Project Name
 

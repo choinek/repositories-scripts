@@ -14,12 +14,14 @@ foreach ($directories as $dir) {
 
     $files = [];
     $totalSize = 0;
+    /** @var SplFileInfo $file */
     foreach ($iterator as $file) {
         $size = filesize($file->getPathname());
         $totalSize += $size;
         $files[] = [
             'name' => $file->getFilename(),
             'size' => $size,
+            'checksum' => hash_file('sha256', $file->getPathname())
         ];
     }
 
