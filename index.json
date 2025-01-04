@@ -1,9 +1,9 @@
 [
     {
-        "name": "choinek-scripts",
-        "url": "https://choinek.github.io/repositories-scripts/download/choinek-scripts.zip",
+        "name": "repository-scripts",
+        "url": "https://choinek.github.io/repositories-scripts/download/repository-scripts.zip",
         "description": "---",
-        "totalSize": 4581,
+        "totalSize": 4584,
         "files": [
             {
                 "name": "README.md",
@@ -12,8 +12,8 @@
             },
             {
                 "name": "text-includer-hook-installer.sh",
-                "size": 2519,
-                "checksum": "b555f32fdac782efff314c7ed777cbd4675011dd5df8b557429e7360d9f13e33"
+                "size": 2522,
+                "checksum": "bca2b45b54c3c555085d6d59f74b0c1949b045ee0a9aae864fc21314bb55758b"
             },
             {
                 "name": "text-includer.sh",
