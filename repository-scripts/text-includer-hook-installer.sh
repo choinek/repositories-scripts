@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HOOK_FILE=".git/hooks/pre-commit"
-INCLUDER_SCRIPT=".choinek-scripts/text-includer.sh"
+INCLUDER_SCRIPT=".repository-scripts/text-includer.sh"
 
 usage() {
     echo "Usage: $0 [-s SOURCE_FILE] [-o OUTPUT_FILE] [-k UNIQUE_KEY]"

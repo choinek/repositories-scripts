@@ -73,7 +73,7 @@ This placeholder will include the content between `#1` and `#2` in the `LICENSE`
 **2. Run the Installer Script**
 
 ```bash
-sh ./choinek-scripts/install-text-includer-hook.sh
+sh ./repository-scripts/install-text-includer-hook.sh
 ```
 
 You will be prompted to enter:
