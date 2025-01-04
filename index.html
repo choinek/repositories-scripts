@@ -7,6 +7,23 @@
     <title>choinek/scripts</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
     <style>
+        header {
+            background-color: var(--background-alt);
+            color: var(--text-bright);
+            padding: 1.5em;
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        header p {
+            margin: 0.5em 0;
+            font-size: 1em;
+            color: var(--text-muted);
+        }
         details {
             margin-bottom: 1em;
         }
@@ -33,12 +50,37 @@
             font-size: 0.8em;
             color: #888;
         }
+
+        footer {
+            background-color: var(--background-alt);
+            color: var(--text-main);
+            margin-top: 2em;
+            padding: 1em;
+            text-align: center;
+            border-top: 2px solid var(--border);
+        }
+        footer .footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+        }
+        footer .footer-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
-<h1>choinek/scripts</h1>
-<p>This is a collection of useful scripts for managing repositories. Use the command below to install:</p>
+<header>
+    <h1>choinek/scripts</h1>
+    <p>Build Date: 2025-01-04 09:02:28</p>
+</header>
+
+<p>This is a collection of useful scripts programmers working like Choinek. :-) Use the command below to install some of them:</p>
 <pre><code>curl -sL https://choinek.github.io/scripts/download/install.sh | bash</code></pre>
+
 <h2>Available Script Groups</h2>
 <div>
             <details>
@@ -52,13 +94,13 @@
                     </tr>
                     <tr>
                         <th scope="row" style="width: 20%">Size</th>
-                        <td>5.73 KB</td>
+                        <td>2.07 KB</td>
                     </tr>
                     <tr>
                         <th scope="row" style="width: 20%">Files</th>
                         <td>
                             <ul>
-                                                                    <li>README.md (3.67 KB)</li>
+                                                                    <li>README.md (0.00 KB)</li>
                                                                     <li>text-includer-hook-installer.sh (1.11 KB)</li>
                                                                     <li>text-includer.sh (0.96 KB)</li>
                                                             </ul>
@@ -67,133 +109,9 @@
                     <tr>
                         <th scope="row" style="width: 20%">Description</th>
                         <td>
-                            <pre class="description-box">
-                                <code># Choinek&#039;s Scripts<br />
-<br />
-Custom scripts by Choinek for working with open-source repositories.<br />
-<br />
-## Requirements<br />
-<br />
-- **Bash**: The scripts use `bash` for features.<br />
-- **Git**: The script integrates with Git hooks for automation.<br />
-<br />
-## License<br />
-<br />
-This project is licensed under the MIT License:<br />
-<br />
-```<br />
-Copyright 2024 Adrian Chojnicki<br />
-<br />
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br />
-<br />
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br />
-<br />
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br />
-```<br />
-<br />
-## Scripts<br />
-<br />
-### Text-Includer<br />
-<br />
-The **Text-Includer** is a flexible script designed to process text files with placeholders and replace them dynamically<br />
-with content from other files. It is particularly useful for generating documentation files like `README.md` by<br />
-including content from other files such as `LICENSE`.<br />
-<br />
-#### How It Works<br />
-<br />
-The Text-Includer script scans a source file for placeholders in the format:<br />
-<br />
-```text<br />
-{{text-includer:v1:loadfile:&lt;file&gt;:&lt;start_marker&gt;:&lt;end_marker&gt;}}<br />
-```<br />
-<br />
-- `&lt;file&gt;`: The file to extract content from.<br />
-- `&lt;start_marker&gt;`: The marker in `&lt;file&gt;` where the included content starts.<br />
-- `&lt;end_marker&gt;`: The marker in `&lt;file&gt;` where the included content ends.<br />
-<br />
-Example placeholder:<br />
-<br />
-```text<br />
-{{text-includer:v1:loadfile:LICENSE:#1:#2}}<br />
-```<br />
-<br />
-This placeholder will include the content between `#1` and `#2` in the `LICENSE` file.<br />
-<br />
-#### Installation<br />
-<br />
-**1. Install Choinek&#039;s Scripts:**<br />
-<br />
-<br />
-(@todo i will put here curl to install after deploy to github pages - few minutes from now :P)<br />
-<br />
-**2. Run the Installer Script**<br />
-<br />
-```bash<br />
-sh .choinek-scripts/install-text-includer-hook.sh<br />
-```<br />
-<br />
-You will be prompted to enter:<br />
-<br />
-- The source file path (e.g., `README.md.source`).<br />
-  - _Check_ [_Usage_](#Usage) _for more details._<br />
-- The output file path (e.g., `README.md`).<br />
-<br />
-**3. Verify the Pre-commit Hook**<br />
-<br />
-The installer will create or update the `.git/hooks/pre-commit` file to include the text-includer logic. It will:<br />
-<br />
-- Generate the output file (e.g., `README.md`) before every commit.<br />
-- Ensure the placeholders in the source file are replaced with the correct content.<br />
-<br />
-### Usage<br />
-<br />
-#### 1. Prepare Your Source File<br />
-<br />
-Add placeholders to your source file using the format:<br />
-<br />
-```text<br />
-{{text-includer:v1:loadfile:&lt;file&gt;:&lt;start_marker&gt;:&lt;end_marker&gt;}}<br />
-```<br />
-<br />
-#### 2. Modify Referenced Files<br />
-<br />
-Ensure the referenced files (e.g., `LICENSE`) contain the markers and content to be included.<br />
-<br />
-#### 3. Commit Changes<br />
-<br />
-When you commit, the pre-commit hook will automatically generate the output file by replacing the placeholders in the<br />
-source file.<br />
-<br />
-### Example<br />
-<br />
-#### Source File: `README.md.source`<br />
-<br />
-```markdown<br />
-# Project Name<br />
-<br />
-## License<br />
-<br />
-{{text-includer:v1:loadfile:LICENSE:#1:#2}}<br />
-```<br />
-<br />
-#### Referenced File: `LICENSE`<br />
-<br />
-```text<br />
-#1<br />
-This is the included license content.<br />
-#2<br />
-```<br />
-<br />
-#### Generated Output: `README.md`<br />
-<br />
-```markdown<br />
-# Project Name<br />
-<br />
-## License<br />
-<br />
-This is the included license content.<br />
-```</code>
-                            </pre>
+                                    <pre class="description-box">
+                                        <code>---</code>
+                                    </pre>
                         </td>
                     </tr>
                     </tbody>
@@ -201,7 +119,7 @@ This is the included license content.<br />
             </div>
         </details>
     </div>
-<h2>Repository information</h2>
+<h2>Repository Information</h2>
 <h3>README.md</h3><pre><code># repositories-scripts
 Custom scripts by Choinek for working with open-source repositories.
 
@@ -229,5 +147,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-</code></pre></body>
+</code></pre><footer>
+    <div class="footer-container">
+        <img src="https://github.com/choinek.png" alt="GitHub Avatar">
+        <div>
+            <p style="margin: 0; font-weight: bold;">Adrian Chojnicki</p>
+            <p style="margin: 0;">
+                <a href="https://github.com/choinek" target="_blank">GitHub</a>
+                <span>|</span>
+                <a href="https://www.linkedin.com/in/adrian-chojnicki-82438583/" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
