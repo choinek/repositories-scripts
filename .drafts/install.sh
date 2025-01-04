@@ -3,8 +3,8 @@
 
 #!/bin/bash
 
-INDEX_URL="https://choinek.github.io/repository-scripts/index.json"
-SCRIPT_BASE_URL="https://choinek.github.io/repository-scripts/download"
+INDEX_URL="https://choinek.github.io/scripts/index.json"
+SCRIPT_BASE_URL="https://choinek.github.io/scripts/download"
 
 function check_dependencies {
     local dependencies=("curl" "jq" "unzip")

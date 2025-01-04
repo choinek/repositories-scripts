@@ -46,7 +46,7 @@ if (is_file('LICENSE')) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>choinek/repository-scripts</title>
+    <title>choinek/scripts</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
     <style>
         details {
@@ -78,9 +78,9 @@ if (is_file('LICENSE')) {
     </style>
 </head>
 <body>
-<h1>choinek/repository-scripts</h1>
+<h1>choinek/scripts</h1>
 <p>This is a collection of useful scripts for managing repositories. Use the command below to install:</p>
-<pre><code>curl -sL https://choinek.github.io/repository-scripts/download/install.sh | bash</code></pre>
+<pre><code>curl -sL https://choinek.github.io/scripts/download/install.sh | bash</code></pre>
 <h2>Available Script Groups</h2>
 <div>
     <?php foreach ($downloadItems as $item): ?>

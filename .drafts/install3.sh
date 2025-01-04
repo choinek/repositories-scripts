@@ -3,7 +3,7 @@
 # [CSSH:0.1:START] #
 # [CSSH:DESCRIPTION:START] #
 # CSSH = Choinek's Standard Shell Handler :) #
-# https://github.com/choinek/repository-scripts/tree/main/choinek-shell-scripts #
+# https://github.com/choinek/scripts/tree/main/choinek-shell-scripts #
 # Version: 0.1.0 #
 # [CSSH:DESCRIPTION:END] #
 
@@ -19,8 +19,8 @@ esac
 
 beforeVars=($(compgen -v))
 beforeVars+=("afterVars" "opt" "PIPESTATUS" "FUNCNAME" "SED_INPLACE")
-INDEX_URL="https://choinek.github.io/repository-scripts/index.json"
-WEBPAGE_URL="https://choinek.github.io/repository-scripts/"
+INDEX_URL="https://choinek.github.io/scripts/index.json"
+WEBPAGE_URL="https://choinek.github.io/scripts/"
 
 ## [CSSH:OPTS:START] ##
 VERBOSE=false
@@ -449,7 +449,7 @@ fi
 # [CSSH:0.1:END] #
 
 show_menu() {
-    eheader "choinek/repository-scripts downloader"
+    eheader "choinek/scripts downloader"
     einfo "[x] means the directory already exists" blue
     local index=1
     for dir in $(echo "$SCRIPT_GROUPS" | jq -r '.[].name'); do
@@ -477,7 +477,7 @@ process_selection() {
     done
 }
 
-einfo "Webpage and informations: https://choinek.github.io/repository-scripts/"
+einfo "Webpage and informations: https://choinek.github.io/scripts/"
 eaction "Fetching script groups list from $INDEX_URL..."
 RAW_JSON=$(curl -sL "$INDEX_URL")
 
