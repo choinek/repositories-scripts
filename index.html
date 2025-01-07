@@ -75,7 +75,7 @@
 <body>
 <header>
     <h1>choinek/scripts</h1>
-    <p>Build Date: 2025-01-04 09:16:51</p>
+    <p>Build Date: 2025-01-07 22:39:15</p>
 </header>
 
 <p>This is a collection of useful scripts programmers working like Choinek. :-) Use the command below to install some of them:</p>
@@ -83,6 +83,94 @@
 
 <h2>Available Script Groups</h2>
 <div>
+            <details>
+            <summary style="width:100%">mac-linux-mimic-scripts</summary>
+            <div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th scope="row" style="width: 20%">File</th>
+                        <td><a href="https://choinek.github.io/repositories-scripts/download/./mac-linux-mimic-scripts.zip">mac-linux-mimic-scripts.zip [Download]</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="width: 20%">Size</th>
+                        <td>6.43 KB</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="width: 20%">Files</th>
+                        <td>
+                            <ul>
+                                                                    <li>mac-free.sh (4.98 KB)</li>
+                                                                    <li>README.md (1.46 KB)</li>
+                                                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" style="width: 20%">Description</th>
+                        <td>
+                                    <pre class="description-box">
+                                        <code># Choinek Mac Mimic Scripts<br />
+<br />
+Custom scripts by **Choinek** for Mac users to mimic Linux functionality.<br />
+<br />
+## Free<br />
+<br />
+- Similar to Linux `free` Command<br />
+  - **Display memory and swap usage statistics**<br />
+  - **Memory Monitoring:** Display total, used, free, shared, buff/cache, and available memory<br />
+  - ~~**Swap Information:** Show total, used, and free swap memory~~<br />
+  - **Unit Conversion:** View memory in kilobytes (KB), megabytes (MB), or gigabytes (GB)<br />
+  - **Continuous Monitoring:** Refresh memory statistics at specified intervals<br />
+  - **Color-Coded Output:** Enhance readability with optional colored output<br />
+<br />
+### Installation<br />
+<br />
+#### Prerequisites<br />
+<br />
+- **macOS**: The script is tailored for macOS environments<br />
+- **Bash + vm_stat**: (default on macOS)<br />
+<br />
+#### Steps<br />
+<br />
+##### Quick Start<br />
+<br />
+    ```bash<br />
+    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh<br />
+    chmod +x mac-free.sh<br />
+    sudo mv mac-free.sh /usr/local/bin/free<br />
+    ```<br />
+<br />
+#### Detailed Instructions<br />
+<br />
+1. **Clone the Repository:**<br />
+    ```bash<br />
+    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh<br />
+    ```<br />
+<br />
+2. **Make the Script Executable:**<br />
+    ```bash<br />
+    chmod +x mac-free.sh<br />
+    ```<br />
+<br />
+3. **Move to a Directory in Your PATH and change its name to free so it will be globaly available:**<br />
+    ```bash<br />
+    sudo mv mac-free.sh /usr/local/bin/free<br />
+    ```<br />
+<br />
+<br />
+### Usage<br />
+```bash<br />
+free<br />
+free -h<br />
+free --random-color<br />
+```</code>
+                                    </pre>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
             <details>
             <summary style="width:100%">repository-scripts</summary>
             <div>
