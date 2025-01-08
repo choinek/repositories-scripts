@@ -4,7 +4,6 @@ UNIT="k"
 DELAY=1
 COUNT=1
 SHOW_TOTALS=0
-SHOW_LOW_HIGH=0
 
 # <ChoinekColors>
 NO_COLOR=0
@@ -103,10 +102,6 @@ display_memory() {
          "$(convert_unit $TOTAL_FREE)" "0" "$(convert_unit $BUFF_CACHE_BYTES)" \
          "$(convert_unit $AVAILABLE_BYTES)"
    fi
-
-   if [ $SHOW_LOW_HIGH -eq 1 ]; then
-      echo -e "${YELLOW}Low/High memory details not supported on macOS.${RESET}\n"
-   fi
 }
 
 show_help() {
@@ -116,7 +111,6 @@ show_help() {
    echo "  -c count      Display the result count times. Requires -s option. "
    echo "  -g            Display the amount of memory in gigabytes."
    echo "  -k            Display the amount of memory in kilobytes (default)."
-   echo "  -l            Show detailed low and high memory statistics."
    echo "  -m            Display the amount of memory in megabytes."
    echo "  -h            Alias for -m. :P"
    echo "  -s delay      Continuously display the result every  'delay' seconds."
@@ -134,7 +128,6 @@ while [[ $# -gt 0 ]]; do
       ;;
    -g) UNIT="g" ;;
    -k) UNIT="k" ;;
-   -l) SHOW_LOW_HIGH=1 ;;
    -m | -h) UNIT="m" ;;
    -s)
       DELAY=$2
