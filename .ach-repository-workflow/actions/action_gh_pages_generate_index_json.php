@@ -23,6 +23,7 @@ foreach ($directories as $dir) {
         $totalSize += $size;
         $files[] = [
             'name' => $file->getFilename(),
+            'path' => $basename . '/' . $file->getFilename(),
             'size' => $size,
             'checksum' => hash_file('sha256', $file->getPathname())
         ];

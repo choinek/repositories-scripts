@@ -252,9 +252,9 @@ $buildDate = date('Y-m-d H:i:s');
     <br>
     <code>sha256:${file.checksum}</code>
     <div class="code-container">
-        <div class="code-header">Bash Script</div>
+        <div class="code-header">Download and check checksum</div>
         <pre class="code-block" id="copy-${file.checksum}">
-curl -f -o script.sh https://raw.githubusercontent.com/choinek/script/${file.path} && \\
+curl -f -o ${file.name} https://raw.githubusercontent.com/choinek/script/${file.path} && \\
 echo "${file.checksum}" | sha256sum -c \\
 && echo "checksum checked" || echo "checksum verification failed"</pre>
         <button class="copy-btn" onclick="copyCode('copy-${file.checksum}')">Copy</button>
