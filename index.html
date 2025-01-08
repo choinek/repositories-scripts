@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
 
     <style>
+        body {
+            max-width:900px;
+        }
         header {
             background-color: var(--background-alt);
             color: var(--text-bright);
@@ -103,7 +106,7 @@
             color: #ffffff;
             padding: 1.5em;
             font-family: "Fira Code", monospace;
-            font-size: 1em;
+            font-size: 0.6em;
             overflow-x: auto;
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -135,7 +138,7 @@
     </style>
 
     <script>
-        function asd5() {
+        function initScripts() {
             fetch('https://choinek.github.io/scripts/index.json')
                 .then(response => response.json())
                 .then(data => {
@@ -158,7 +161,7 @@
                         const fileRow = document.createElement('tr');
                         const fileHeader = document.createElement('th');
                         fileHeader.scope = 'row';
-                        fileHeader.style.width = '20%';
+                        fileHeader.style.width = '15%';
                         fileHeader.textContent = 'File';
                         const fileData = document.createElement('td');
                         const fileLink = document.createElement('a');
@@ -173,7 +176,7 @@
                         const zipChecksumRow = document.createElement('tr');
                         const zipChecksumHeader = document.createElement('th');
                         zipChecksumHeader.scope = 'row';
-                        zipChecksumHeader.style.width = '20%';
+                        zipChecksumHeader.style.width = '15%';
                         zipChecksumHeader.textContent = 'Checksum';
                         const zipChecksumData = document.createElement('td');
                         zipChecksumData.textContent = group.checksum || 'N/A'; // Add checksum for ZIP if available
@@ -184,7 +187,7 @@
                         const filesRow = document.createElement('tr');
                         const filesHeader = document.createElement('th');
                         filesHeader.scope = 'row';
-                        filesHeader.style.width = '20%';
+                        filesHeader.style.width = '15%';
                         filesHeader.textContent = 'Files';
                         const filesData = document.createElement('td');
                         const fileList = document.createElement('ul');
@@ -197,8 +200,8 @@
     <div class="code-container">
         <div class="code-header">Bash Script</div>
         <pre class="code-block" id="copy-${file.checksum}">
-curl -f -o script.sh https://raw.githubusercontent.com/choinek/script/{$file.path} && \\
-echo "{$file.checksum}" | sha256sum -c \\
+curl -f -o script.sh https://raw.githubusercontent.com/choinek/script/${file.path} && \\
+echo "${file.checksum}" | sha256sum -c \\
 && echo "checksum checked" || echo "checksum verification failed"</pre>
         <button class="copy-btn" onclick="copyCode('copy-${file.checksum}')">Copy</button>
     </div>
@@ -214,7 +217,7 @@ echo "{$file.checksum}" | sha256sum -c \\
                         const descriptionRow = document.createElement('tr');
                         const descriptionHeader = document.createElement('th');
                         descriptionHeader.scope = 'row';
-                        descriptionHeader.style.width = '20%';
+                        descriptionHeader.style.width = '15%';
                         descriptionHeader.textContent = 'Description';
                         const descriptionData = document.createElement('td');
                         const descriptionBox = document.createElement('pre');
@@ -245,13 +248,16 @@ echo "{$file.checksum}" | sha256sum -c \\
                 alert('Failed to copy code. Please try again.');
             });
         }
+
+        initScripts();
+
     </script>
 
 </head>
 <body>
 <header>
     <h1>choinek/scripts</h1>
-    <p>Build Date: 2025-01-08 00:07:12</p>
+    <p>Build Date: 2025-01-08 00:16:40</p>
 </header>
 
 <p>This is a collection of useful scripts programmers working like Choinek. :-) Use the command below to install some of
@@ -265,15 +271,15 @@ echo "{$file.checksum}" | sha256sum -c \\
                 <table>
                     <tbody>
                     <tr>
-                        <th scope="row" style="width: 20%">File</th>
+                        <th scope="row" style="width: 15%">File</th>
                         <td><a href="https://choinek.github.io/repositories-scripts/download/./mac-linux-mimic-scripts.zip">mac-linux-mimic-scripts.zip [Download]</a></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Size</th>
+                        <th scope="row" style="width: 15%">Size</th>
                         <td>6.20 KB</td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Files</th>
+                        <th scope="row" style="width: 15%">Files</th>
                         <td>
                             <ul>
                                                                     <li>mac-free.sh                                        (4.74 KB)
@@ -284,7 +290,7 @@ echo "{$file.checksum}" | sha256sum -c \\
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Description</th>
+                        <th scope="row" style="width: 15%">Description</th>
                         <td>
                                     <pre class="description-box">
                                         <code># Choinek Mac Mimic Scripts<br />
@@ -355,15 +361,15 @@ free --random-color<br />
                 <table>
                     <tbody>
                     <tr>
-                        <th scope="row" style="width: 20%">File</th>
+                        <th scope="row" style="width: 15%">File</th>
                         <td><a href="https://choinek.github.io/repositories-scripts/download/./repository-scripts.zip">repository-scripts.zip [Download]</a></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Size</th>
+                        <th scope="row" style="width: 15%">Size</th>
                         <td>4.48 KB</td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Files</th>
+                        <th scope="row" style="width: 15%">Files</th>
                         <td>
                             <ul>
                                                                     <li>README.md                                        (0.00 KB)
@@ -376,7 +382,7 @@ free --random-color<br />
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Description</th>
+                        <th scope="row" style="width: 15%">Description</th>
                         <td>
                                     <pre class="description-box">
                                         <code>---</code>

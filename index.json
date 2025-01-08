@@ -3,7 +3,7 @@
         "name": "mac-linux-mimic-scripts",
         "url": "https://choinek.github.io/repositories-scripts/download/mac-linux-mimic-scripts.zip",
         "zipMissing": false,
-        "checksum": "97aa01126be6a80e5814ff3e90717a33daeee1900dfe89459428afaf1535c6fb",
+        "checksum": "ef1fac10566f2eaeda7728e22054d27868a521c73b5895c7f5f3b4c1a56995ee",
         "description": "# Choinek Mac Mimic Scripts\n\nCustom scripts by **Choinek** for Mac users to mimic Linux functionality.\n\n## Free\n\n- Similar to Linux `free` Command\n  - **Display memory and swap usage statistics**\n  - **Memory Monitoring:** Display total, used, free, shared, buff/cache, and available memory\n  - ~~**Swap Information:** Show total, used, and free swap memory~~\n  - **Unit Conversion:** View memory in kilobytes (KB), megabytes (MB), or gigabytes (GB)\n  - **Continuous Monitoring:** Refresh memory statistics at specified intervals\n  - **Color-Coded Output:** Enhance readability with optional colored output\n\n### Installation\n\n#### Prerequisites\n\n- **macOS**: The script is tailored for macOS environments\n- **Bash + vm_stat**: (default on macOS)\n\n#### Steps\n\n##### Quick Start\n\n    ```bash\n    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\n    chmod +x mac-free.sh\n    sudo mv mac-free.sh /usr/local/bin/free\n    ```\n\n#### Detailed Instructions\n\n1. **Clone the Repository:**\n    ```bash\n    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\n    ```\n\n2. **Make the Script Executable:**\n    ```bash\n    chmod +x mac-free.sh\n    ```\n\n3. **Move to a Directory in Your PATH and change its name to free so it will be globaly available:**\n    ```bash\n    sudo mv mac-free.sh /usr/local/bin/free\n    ```\n\n\n### Usage\n```bash\nfree\nfree -h\nfree --random-color\n```",
         "totalSize": 6348,
         "files": [
@@ -23,7 +23,7 @@
         "name": "repository-scripts",
         "url": "https://choinek.github.io/repositories-scripts/download/repository-scripts.zip",
         "zipMissing": false,
-        "checksum": "37f621a06c86063a0f5002f1cf431afc43f592338e3f255b3a9e089c2154ac31",
+        "checksum": "407dbf44609b2ede6d69a1d2d0d5141ab2bb42dbe2841f3f0bda305cb9821db6",
         "description": "---",
         "totalSize": 4584,
         "files": [
