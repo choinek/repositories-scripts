@@ -31,10 +31,10 @@ jobs:
             run: .ach-repository-workflow/actions/action_gh_pages_prepare_zip_script_groups.sh
 
          -  name: Generate JSON index
-            run: php ./ach-repository-workflow/actions/action_gh_pages_generate_index_json.php > public/index.json
+            run: php .ach-repository-workflow/actions/action_gh_pages_generate_index_json.php > public/index.json
 
          -  name: Generate HTML index page
-            run: php ./ach-repository-workflow/actions/action_gh_pages_generate_index_page.php > public/index.html
+            run: php .ach-repository-workflow/actions/action_gh_pages_generate_index_page.php > public/index.html
 
          - name: Deploy
            uses: peaceiris/actions-gh-pages@v4
