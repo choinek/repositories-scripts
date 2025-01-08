@@ -21,13 +21,19 @@ Custom scripts by **Choinek** for Mac users to mimic Linux functionality.
 
 #### Steps
 
-##### Quick Start
+#### Quick Start
 
-    ```bash
-    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh
-    chmod +x mac-free.sh
-    sudo mv mac-free.sh /usr/local/bin/free
-    ```
+| ⚠️ **Checksum Check**                                                                           |
+|-------------------------------------------------------------------------------------------------|
+| Checksum verification is recommended after downloading any file. My scripts are not exceptions. |
+| You can find checksums on my [**scripts page**](https://choinek.github.io/scripts/)       |
+
+```bash
+curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh
+chmod +x mac-free.sh
+sudo mv mac-free.sh /usr/local/bin/free
+```
+
 
 #### Detailed Instructions
 
