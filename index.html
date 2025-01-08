@@ -200,7 +200,7 @@
     <div class="code-container">
         <div class="code-header">Download and check checksum</div>
         <pre class="code-block" id="copy-${file.checksum}">
-curl -f -o ${file.name} https://raw.githubusercontent.com/choinek/script/${file.path} && \\
+curl -f -o ${file.name} https://raw.githubusercontent.com/choinek/scripts/refs/heads/main/${file.path} && \\
 echo "${file.checksum}" | sha256sum -c \\
 && echo "checksum checked" || echo "checksum verification failed"</pre>
         <button class="copy-btn" onclick="copyCode('copy-${file.checksum}')">Copy</button>
@@ -257,7 +257,7 @@ echo "${file.checksum}" | sha256sum -c \\
 <body>
 <header>
     <h1>choinek/scripts</h1>
-    <p>Build Date: 2025-01-08 00:26:12</p>
+    <p>Build Date: 2025-01-08 00:32:55</p>
 </header>
 
 <p>This is a collection of useful scripts programmers working like Choinek. :-) Use the command below to install some of
