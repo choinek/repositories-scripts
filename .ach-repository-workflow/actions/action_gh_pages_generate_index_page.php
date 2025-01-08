@@ -62,6 +62,9 @@ $buildDate = date('Y-m-d H:i:s');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
 
     <style>
+        body {
+            max-width:900px;
+        }
         header {
             background-color: var(--background-alt);
             color: var(--text-bright);
@@ -157,7 +160,7 @@ $buildDate = date('Y-m-d H:i:s');
             color: #ffffff;
             padding: 1.5em;
             font-family: "Fira Code", monospace;
-            font-size: 1em;
+            font-size: 0.6em;
             overflow-x: auto;
             white-space: pre-wrap;
             word-wrap: break-word;
@@ -189,7 +192,7 @@ $buildDate = date('Y-m-d H:i:s');
     </style>
 
     <script>
-        function asd5() {
+        function initScripts() {
             fetch('https://choinek.github.io/scripts/index.json')
                 .then(response => response.json())
                 .then(data => {
@@ -212,7 +215,7 @@ $buildDate = date('Y-m-d H:i:s');
                         const fileRow = document.createElement('tr');
                         const fileHeader = document.createElement('th');
                         fileHeader.scope = 'row';
-                        fileHeader.style.width = '20%';
+                        fileHeader.style.width = '15%';
                         fileHeader.textContent = 'File';
                         const fileData = document.createElement('td');
                         const fileLink = document.createElement('a');
@@ -227,7 +230,7 @@ $buildDate = date('Y-m-d H:i:s');
                         const zipChecksumRow = document.createElement('tr');
                         const zipChecksumHeader = document.createElement('th');
                         zipChecksumHeader.scope = 'row';
-                        zipChecksumHeader.style.width = '20%';
+                        zipChecksumHeader.style.width = '15%';
                         zipChecksumHeader.textContent = 'Checksum';
                         const zipChecksumData = document.createElement('td');
                         zipChecksumData.textContent = group.checksum || 'N/A'; // Add checksum for ZIP if available
@@ -238,7 +241,7 @@ $buildDate = date('Y-m-d H:i:s');
                         const filesRow = document.createElement('tr');
                         const filesHeader = document.createElement('th');
                         filesHeader.scope = 'row';
-                        filesHeader.style.width = '20%';
+                        filesHeader.style.width = '15%';
                         filesHeader.textContent = 'Files';
                         const filesData = document.createElement('td');
                         const fileList = document.createElement('ul');
@@ -251,8 +254,8 @@ $buildDate = date('Y-m-d H:i:s');
     <div class="code-container">
         <div class="code-header">Bash Script</div>
         <pre class="code-block" id="copy-${file.checksum}">
-curl -f -o script.sh https://raw.githubusercontent.com/choinek/script/{$file.path} && \\
-echo "{$file.checksum}" | sha256sum -c \\
+curl -f -o script.sh https://raw.githubusercontent.com/choinek/script/${file.path} && \\
+echo "${file.checksum}" | sha256sum -c \\
 && echo "checksum checked" || echo "checksum verification failed"</pre>
         <button class="copy-btn" onclick="copyCode('copy-${file.checksum}')">Copy</button>
     </div>
@@ -268,7 +271,7 @@ echo "{$file.checksum}" | sha256sum -c \\
                         const descriptionRow = document.createElement('tr');
                         const descriptionHeader = document.createElement('th');
                         descriptionHeader.scope = 'row';
-                        descriptionHeader.style.width = '20%';
+                        descriptionHeader.style.width = '15%';
                         descriptionHeader.textContent = 'Description';
                         const descriptionData = document.createElement('td');
                         const descriptionBox = document.createElement('pre');
@@ -299,6 +302,9 @@ echo "{$file.checksum}" | sha256sum -c \\
                 alert('Failed to copy code. Please try again.');
             });
         }
+
+        initScripts();
+
     </script>
 
 </head>
@@ -320,15 +326,15 @@ echo "{$file.checksum}" | sha256sum -c \\
                 <table>
                     <tbody>
                     <tr>
-                        <th scope="row" style="width: 20%">File</th>
+                        <th scope="row" style="width: 15%">File</th>
                         <td><a href="<?= $item['url'] ?>"><?= basename($item['name']) ?>.zip [Download]</a></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Size</th>
+                        <th scope="row" style="width: 15%">Size</th>
                         <td><?= number_format($item['totalSize'] / 1024, 2) ?> KB</td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Files</th>
+                        <th scope="row" style="width: 15%">Files</th>
                         <td>
                             <ul>
                                 <?php foreach ($item['files'] as $file): ?>
@@ -340,7 +346,7 @@ echo "{$file.checksum}" | sha256sum -c \\
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" style="width: 20%">Description</th>
+                        <th scope="row" style="width: 15%">Description</th>
                         <td>
                                     <pre class="description-box">
                                         <code><?= nl2br(htmlspecialchars($item['description'])) ?></code>
