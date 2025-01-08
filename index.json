@@ -3,17 +3,19 @@
         "name": "mac-linux-mimic-scripts",
         "url": "https://choinek.github.io/repositories-scripts/download/mac-linux-mimic-scripts.zip",
         "zipMissing": false,
-        "checksum": "ef1fac10566f2eaeda7728e22054d27868a521c73b5895c7f5f3b4c1a56995ee",
+        "checksum": "137c807051d46dfad5239e9bfaab141d23aa869e6cde13e074dd56fc780c0107",
         "description": "# Choinek Mac Mimic Scripts\n\nCustom scripts by **Choinek** for Mac users to mimic Linux functionality.\n\n## Free\n\n- Similar to Linux `free` Command\n  - **Display memory and swap usage statistics**\n  - **Memory Monitoring:** Display total, used, free, shared, buff/cache, and available memory\n  - ~~**Swap Information:** Show total, used, and free swap memory~~\n  - **Unit Conversion:** View memory in kilobytes (KB), megabytes (MB), or gigabytes (GB)\n  - **Continuous Monitoring:** Refresh memory statistics at specified intervals\n  - **Color-Coded Output:** Enhance readability with optional colored output\n\n### Installation\n\n#### Prerequisites\n\n- **macOS**: The script is tailored for macOS environments\n- **Bash + vm_stat**: (default on macOS)\n\n#### Steps\n\n##### Quick Start\n\n    ```bash\n    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\n    chmod +x mac-free.sh\n    sudo mv mac-free.sh /usr/local/bin/free\n    ```\n\n#### Detailed Instructions\n\n1. **Clone the Repository:**\n    ```bash\n    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\n    ```\n\n2. **Make the Script Executable:**\n    ```bash\n    chmod +x mac-free.sh\n    ```\n\n3. **Move to a Directory in Your PATH and change its name to free so it will be globaly available:**\n    ```bash\n    sudo mv mac-free.sh /usr/local/bin/free\n    ```\n\n\n### Usage\n```bash\nfree\nfree -h\nfree --random-color\n```",
         "totalSize": 6348,
         "files": [
             {
                 "name": "mac-free.sh",
+                "path": "mac-linux-mimic-scripts/mac-free.sh",
                 "size": 4857,
                 "checksum": "bf792cd1810b870af78b01a902fb5c282d160baeeeb77b87dc709d06011bf743"
             },
             {
                 "name": "README.md",
+                "path": "mac-linux-mimic-scripts/README.md",
                 "size": 1491,
                 "checksum": "ae15f78aef9f7fae19fc9301aa85ff5cdf63fa0aed523d7dc2f9703bcc612a1f"
             }
@@ -23,22 +25,25 @@
         "name": "repository-scripts",
         "url": "https://choinek.github.io/repositories-scripts/download/repository-scripts.zip",
         "zipMissing": false,
-        "checksum": "407dbf44609b2ede6d69a1d2d0d5141ab2bb42dbe2841f3f0bda305cb9821db6",
+        "checksum": "13352cfd13ed6791b47cea52519d578682b9b58dc5fe41b4d0093dc8b7c50cf4",
         "description": "---",
         "totalSize": 4584,
         "files": [
             {
                 "name": "README.md",
+                "path": "repository-scripts/README.md",
                 "size": 4,
                 "checksum": "f52d711103d50a437830c6fbcd04fb4bab49a0f82f6d26d1c791c6e8488dd090"
             },
             {
                 "name": "text-includer-hook-installer.sh",
+                "path": "repository-scripts/text-includer-hook-installer.sh",
                 "size": 2522,
                 "checksum": "bca2b45b54c3c555085d6d59f74b0c1949b045ee0a9aae864fc21314bb55758b"
             },
             {
                 "name": "text-includer.sh",
+                "path": "repository-scripts/text-includer.sh",
                 "size": 2058,
                 "checksum": "db040254aee9aa46e8468b2088655406bee4a42257c498d9594833ede675d5e5"
             }
