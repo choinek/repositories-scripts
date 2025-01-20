@@ -29,9 +29,15 @@ Custom scripts by **Choinek** for Mac users to mimic Linux functionality.
 | You can find checksums on my [**scripts page**](https://choinek.github.io/scripts/)       |
 
 ```bash
-curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh
-chmod +x mac-free.sh
-sudo mv mac-free.sh /usr/local/bin/free
+curl -f -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/main/mac-linux-mimic-scripts/mac-free.sh && \
+echo "bf792cd1810b870af78b01a902fb5c282d160baeeeb77b87dc709d06011bf743  mac-free.sh" | sha256sum -c && \
+echo "checksum checked" && \
+chmod +x mac-free.sh && \
+echo "Need sudo to install..." && \
+sudo mv mac-free.sh /usr/local/bin/free && \
+echo "Script installed successfully as 'free'" && \
+echo "   Usage:" && \
+echo "      free --help"
 ```
 
 

@@ -1,5 +1,8 @@
 #!/bin/bash
-
+#### Old script, deprecated, I committed it out of sentiment. :)
+#### USE ./mac-free .sh instead #!/bin/bash
+#echo "Deprecated, if you want to use it replace first 4 lines with #!/bin/bash"
+#
 UNIT="k"
 DELAY=1
 COUNT=1

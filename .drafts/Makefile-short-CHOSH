@@ -1,0 +1,24 @@
+# Define blocks in the Makefile
+# @Block block group;; Example1;; "First Example"
+# @Block block group;; Example2;; "Second Example"
+# @Block block group;; Example3;; "Third Example"
+
+# Function to process blocks using a callback
+cssh_read_short = \
+    grep '^# @Block block' $(MAKEFILE_LIST) | while IFS= read -r line; do \
+        params=$$(echo "$$line" | sed 's/^# @Block block //'); \
+        IFS=';;' read -r type name desc <<< "$$params"; \
+        type=$$(echo "$$type" | xargs); \
+        name=$$(echo "$$name" | xargs); \
+        desc=$$(echo "$$desc" | xargs); \
+        $(1) "$$type" "$$name" "$$desc"; \
+    done
+
+# Callback function to process each block
+process_block = \
+    echo "block $$2 of type $$1 has description $$3"
+
+# Target to list all blocks
+list:
+	@echo "Listing all blocks:"
+	@$(call cssh_read_short,$(process_block))
