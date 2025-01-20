@@ -26,7 +26,7 @@ Custom scripts by **Choinek** for Mac users to mimic Linux functionality.
 | ⚠️ **Checksum Check**                                                                           |
 |-------------------------------------------------------------------------------------------------|
 | Checksum verification is recommended after downloading any file. My scripts are not exceptions. |
-| You can find checksums on my [**scripts page**](https://choinek.github.io/scripts/)       |
+| You can find checksums on my [**scripts page**](https://choinek.github.io/scripts/)             |
 
 ```bash
 curl -f -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/main/mac-linux-mimic-scripts/mac-free.sh && \
