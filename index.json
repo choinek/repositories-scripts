@@ -3,21 +3,21 @@
         "name": "mac-linux-mimic-scripts",
         "url": "https://choinek.github.io/repositories-scripts/download/mac-linux-mimic-scripts.zip",
         "zipMissing": false,
-        "checksum": "f04f51076f0d32b871ec2dd6da66603e9e139902f93e99fb9d570896444bf92f",
-        "description": "# Choinek Mac Mimic Scripts\n\nCustom scripts by **Choinek** for Mac users to mimic Linux functionality.\n\n## Free\n\n- Similar to Linux `free` Command\n  - **Display memory and swap usage statistics**\n  - **Memory Monitoring:** Display total, used, free, shared, buff/cache, and available memory\n  - ~~**Swap Information:** Show total, used, and free swap memory~~\n  - **Unit Conversion:** View memory in kilobytes (KB), megabytes (MB), or gigabytes (GB)\n  - **Continuous Monitoring:** Refresh memory statistics at specified intervals\n  - **Color-Coded Output:** Enhance readability with optional colored output\n\n### Installation\n\n#### Prerequisites\n\n- **macOS**: The script is tailored for macOS environments\n- **Bash + vm_stat**: (default on macOS)\n\n#### Steps\n\n#### Quick Start\n\n| \u26a0\ufe0f **Checksum Check**                                                                           |\n|-------------------------------------------------------------------------------------------------|\n| Checksum verification is recommended after downloading any file. My scripts are not exceptions. |\n| You can find checksums on my [**scripts page**](https://choinek.github.io/scripts/)       |\n\n```bash\ncurl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\nchmod +x mac-free.sh\nsudo mv mac-free.sh /usr/local/bin/free\n```\n\n\n#### Detailed Instructions\n\n1. **Clone the Repository:**\n    ```bash\n    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\n    ```\n\n2. **Make the Script Executable:**\n    ```bash\n    chmod +x mac-free.sh\n    ```\n\n3. **Move to a Directory in Your PATH and change its name to free so it will be globaly available:**\n    ```bash\n    sudo mv mac-free.sh /usr/local/bin/free\n    ```\n\n\n### Usage\n```bash\nfree\nfree -h\nfree --random-color\n```",
-        "totalSize": 6727,
+        "checksum": "769509a9bf1a5cf41a6b2f7918eca4ca3afe434f6939c52b262c7140f52922a8",
+        "description": "# Choinek Mac Mimic Scripts\n\nCustom scripts by **Choinek** for Mac users to mimic Linux functionality.\n\n## Free\n\n- Similar to Linux `free` Command\n  - **Display memory and swap usage statistics**\n  - **Memory Monitoring:** Display total, used, free, shared, buff/cache, and available memory\n  - ~~**Swap Information:** Show total, used, and free swap memory~~\n  - **Unit Conversion:** View memory in kilobytes (KB), megabytes (MB), or gigabytes (GB)\n  - **Continuous Monitoring:** Refresh memory statistics at specified intervals\n  - **Color-Coded Output:** Enhance readability with optional colored output\n\n### Installation\n\n#### Prerequisites\n\n- **macOS**: The script is tailored for macOS environments\n- **Bash + vm_stat**: (default on macOS)\n\n#### Steps\n\n#### Quick Start\n\n| \u26a0\ufe0f **Checksum Check**                                                                           |\n|-------------------------------------------------------------------------------------------------|\n| Checksum verification is recommended after downloading any file. My scripts are not exceptions. |\n| You can find checksums on my [**scripts page**](https://choinek.github.io/scripts/)             |\n\n```bash\ncurl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\nchmod +x mac-free.sh\nsudo mv mac-free.sh /usr/local/bin/free\n```\n\n\n#### Detailed Instructions\n\n1. **Clone the Repository:**\n    ```bash\n    curl -o mac-free.sh https://raw.githubusercontent.com/choinek/scripts/refs/heads/mac-linux-mimic-scripts/mac-free.sh\n    ```\n\n2. **Make the Script Executable:**\n    ```bash\n    chmod +x mac-free.sh\n    ```\n\n3. **Move to a Directory in Your PATH and change its name to free so it will be globaly available:**\n    ```bash\n    sudo mv mac-free.sh /usr/local/bin/free\n    ```\n\n\n### Usage\n```bash\nfree\nfree -h\nfree --random-color\n```",
+        "totalSize": 6733,
         "files": [
+            {
+                "name": "README.md",
+                "path": "mac-linux-mimic-scripts/README.md",
+                "size": 1876,
+                "checksum": "e61771d6901d78eb8892e8415f3c85acced11ed43a24d4548839170944c35fca"
+            },
             {
                 "name": "mac-free.sh",
                 "path": "mac-linux-mimic-scripts/mac-free.sh",
                 "size": 4857,
                 "checksum": "bf792cd1810b870af78b01a902fb5c282d160baeeeb77b87dc709d06011bf743"
-            },
-            {
-                "name": "README.md",
-                "path": "mac-linux-mimic-scripts/README.md",
-                "size": 1870,
-                "checksum": "747872af1946243bcac4fe30075340c38629b0e89b9a88f306620030e3ac00fb"
             }
         ]
     },
@@ -25,7 +25,7 @@
         "name": "repository-scripts",
         "url": "https://choinek.github.io/repositories-scripts/download/repository-scripts.zip",
         "zipMissing": false,
-        "checksum": "2edc79d72e9f0ec3b0eedd6beaebc8e8083fa7bb6cd2ad1d569b46aab557fc3a",
+        "checksum": "36fc336d23747ccbdb018c56d95a77aadb74cf361e9244f76f8e938e8e3d78af",
         "description": "---",
         "totalSize": 4584,
         "files": [
